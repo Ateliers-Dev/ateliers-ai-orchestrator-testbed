@@ -1,4 +1,4 @@
-# v7 実Codex E2Eシナリオ
+# 実Codex E2Eシナリオ
 
 ## 目的
 
