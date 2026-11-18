@@ -1,10 +1,22 @@
-# v7 実Codex E2Eシナリオ
+# 実Codex E2Eシナリオ
 
 ## 目的
 
 同じ未修正課題から毎回開始し、Ateliers AI Orchestrator の実Codex経路で Implementer、独立Reviewer、必要な場合の修正・再レビュー、push、PR作成、Reviewerコメント証跡まで確認します。修正ループを起こすこと自体は受入条件にしません。
 
-この教材はローカルの文字列処理だけを扱います。外部サービス接続、デプロイ、秘密情報、実データはありません。E2Eで作成した修正PRは証跡を確認したらクローズし、`main` へマージしません。導入・保守のPRはレビュー対象の通常PRです。
+教材のコードとチェックはローカルの文字列処理だけを扱います。教材コードはSlackや他の外部サービスへ接続せず、秘密情報や実データも含みません。オーケストレーターのE2Eランナーは、ライフサイクル通知の検証としてSlackを任意に使えます。通知モードの既定値は `disabled` です。E2Eで作成した修正PRは証跡を確認したらクローズし、`main` へマージしません。導入・保守のPRはレビュー対象の通常PRです。
+
+### Slack通知モード
+
+オーケストレーターのE2Eランナーでは、実Codex開始前に `-SlackNotifications` で通知モードを選べます。省略時は `disabled` で、Slack設定の読込・認証通信・投稿を行いません。
+
+| モード | 動作 |
+| --- | --- |
+| `disabled` | Slack通知を行わない。既定値。 |
+| `test` | `[Ateliers AI TEST]` と表示した通知を `%LOCALAPPDATA%\Ateliers-Dev\Ai-Orchestrator\config\slack.json` の `testChannelId` だけに送る。通常チャンネルとは異なる設定が必要。 |
+| `auto` | `slack.json` の各Botに設定された通常通知先へ送信する。 |
+
+`test` と `auto` は明示指定時に限り、通知先とBot IDを表示し、Token値を出さずにBot認証を確認します。通知を指定したE2Eでは、Slack送信成功が確認できない場合は不合格です。送信後はrun IDの到達確認が必要です。設定ファイルとTokenはTestbed checkout、チャット、PR、実行ログへ置かず、インストール済みユーザー設定またはローカルの明示パスから読み込みます。
 
 ## 対象課題と再現
 

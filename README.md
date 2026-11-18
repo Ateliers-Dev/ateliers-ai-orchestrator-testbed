@@ -30,4 +30,6 @@ dotnet run --project tests/WordCounter.Tests/WordCounter.Tests.csproj --configur
 
 ## 実行シナリオ
 
-課題の指示、受入条件、オーケストレーター既存契約への対応は [v7 E2Eシナリオ](docs/v7-e2e-scenario.md) を参照してください。エージェント作業の境界は [AGENTS.md](AGENTS.md) に記載しています。
+課題の指示、受入条件、オーケストレーター既存契約への対応は [E2Eシナリオ](docs/e2e-scenario.md) を参照してください。エージェント作業の境界は [AGENTS.md](AGENTS.md) に記載しています。
+
+シナリオでSlack通知を検証する場合の `disabled` / `test` / `auto` 選択、既定動作、設定ファイルの扱いも同シナリオに記載しています。Slack通知はオーケストレーター実行時だけに属し、課題コードやTestbed checkoutへ設定を追加しません。
